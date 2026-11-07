@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Token History – Smart Queue</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/org.css">
+  <link rel="stylesheet" href="../css/visitor.css">
+</head>
+<body class="admin-body visitor-body">
+  <div class="admin-layout">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <span class="brand-logo">SQ</span>
+        <span class="brand-name">Smart Queue</span>
+      </div>
+
+      <div class="vis-card">
+        <span class="vis-avatar" id="visAvatar"></span>
+        <span class="org-card-text">
+          <span class="org-card-name" id="visName"></span>
+          <span class="org-card-sub" id="visEmail"></span>
+        </span>
+      </div>
+
+      <nav class="admin-nav" aria-label="Visitor">
+        <span class="admin-nav-label">Menu</span>
+        <a href="my-token.html" class="admin-nav-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>My Token</a>
+        <a href="token-history.html" class="admin-nav-link" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg>Token History</a>
+        <a href="profile.html" class="admin-nav-link"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>Profile</a>
+      </nav>
+
+      <a href="login.html" class="admin-nav-link admin-logout"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>Logout</a>
+    </aside>
+
+    <!-- ===== Main ===== -->
+    <main class="admin-main admin-main--list">
+      <div class="page-head-row">
+        <div class="admin-page-head">
+          <h1>Token History</h1>
+          <p>All your tokens, newest first.</p>
+        </div>
+      </div>
+
+      <section class="admin-card admin-card--list">
+        <div class="admin-toolbar">
+          <label class="per-page">Show
+            <select id="perPage">
+              <option value="50" selected>50</option>
+              <option value="100">100</option>
+              <option value="150">150</option>
+              <option value="200">200</option>
+            </select>
+            per page
+          </label>
+          <div class="toolbar-right">
+            <label class="per-page">Token date
+              <input type="date" id="dateFilter" aria-label="Token date">
+            </label>
+            <label class="per-page">Status
+              <select id="statusFilter">
+                <option value="">All</option>
+                <option value="Waiting">Waiting</option>
+                <option value="Called">Called</option>
+                <option value="Served">Served</option>
+                <option value="No show">No show</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+            </label>
+            <div class="admin-search">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <input type="search" id="search" placeholder="Search token or organization" aria-label="Search token or organization">
+            </div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead><tr><th scope="col">#</th><th scope="col">Token no.</th><th scope="col">Organization</th><th scope="col">Counter</th><th scope="col">Token date</th><th scope="col">Issued on</th><th scope="col">Status</th></tr></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="admin-pager">
+          <span id="pageInfo" class="page-info"></span>
+          <nav id="pagination" class="pagination" aria-label="Pagination"></nav>
+        </div>
+      </section>
+
+      <footer class="admin-footer">
+        &copy; <span id="year">2026</span> Smart Queue &middot; Online queue management &amp; waiting estimation
+      </footer>
+    </main>
+
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/org-common.js"></script>
+  <script src="../js/visitor-data.js"></script>
+  <script src="../js/visitor-common.js"></script>
+  <script src="../js/visitor-history.js"></script>
+</body>
+</html>

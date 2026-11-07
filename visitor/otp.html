@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visitor OTP Verification – Smart Queue</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== Header ===== -->
+    <header class="site-header site-header--split">
+      <a href="../index.html" class="brand" aria-label="Smart Queue home">
+        <span class="brand-logo">SQ</span>
+        <span class="brand-name">Smart Queue</span>
+      </a>
+      <a href="login.html" class="back-link">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        Back to login
+      </a>
+    </header>
+
+    <main class="main main--form">
+      <section class="form-card form-card--narrow portal--visitor">
+
+        <div class="login-step">
+          <div class="form-head form-head--center">
+            <div class="portal-icon portal-icon--sm">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            </div>
+            <div>
+              <h1 class="form-title">Enter OTP</h1>
+              <p class="form-subtitle">We sent a 6-digit code to <strong id="sentTo">you@example.com</strong>. <a href="login.html" class="link-btn">Change</a></p>
+            </div>
+          </div>
+
+          <!-- action will point to your PHP file later, e.g. ../php/visitor_verify_otp.php -->
+          <form id="otpForm" class="form" action="#" method="post" novalidate data-role="visitor">
+            <fieldset class="field">
+              <legend>One-time password</legend>
+              <div class="otp-boxes" id="otpBoxes">
+                <input type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="Digit 1">
+                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2">
+                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3">
+                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4">
+                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5">
+                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6">
+              </div>
+              <input type="hidden" name="otp" id="otpValue">
+              <small class="error" data-for="otp"></small>
+            </fieldset>
+
+            <div class="resend-row">
+              <span>Didn’t get the email? Check your spam folder.</span>
+              <span id="resendTimer" class="resend-timer">Resend OTP in 00:30</span>
+              <button type="button" id="resendBtn" class="link-btn" hidden>Resend OTP</button>
+            </div>
+
+            <button type="submit" class="btn btn--solid btn--block">Verify &amp; login</button>
+
+            <p class="form-note">The code expires in 5 minutes. Never share your OTP with anyone.</p>
+          </form>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      &copy; <span id="year">2026</span> Smart Queue &middot; Online queue management &amp; waiting estimation
+    </footer>
+
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/otp.js"></script>
+</body>
+</html>

@@ -1,0 +1,671 @@
+/* =========================================================
+   Smart Queue – Home page styles
+   Colour theme: Option 5 (Navy & Ocean Teal)
+   ========================================================= */
+
+/* ---------- Colour & size tokens (change the theme here) ---------- */
+:root {
+  /* Base */
+  --bg-start:      #E0E7FF;   /* gradient: top-left  */
+  --bg-mid:        #F8FAFC;   /* gradient: middle    */
+  --bg-end:        #DDEEF3;   /* gradient: bottom-right */
+  --surface:       #FFFFFF;   /* cards, pill          */
+  --ink:           #0F172A;   /* main text            */
+  --muted:         #475569;   /* secondary text       */
+  --border:        #DCE3EE;
+
+  /* Organization (navy) */
+  --org:           #1E3A8A;
+  --org-soft:      #E0E7FF;
+
+  /* Visitor (ocean teal) */
+  --visitor:       #0E7490;
+  --visitor-soft:  #E0EFF4;
+
+  /* Status */
+  --live:          #16A34A;
+
+  /* Shape */
+  --radius-card:   22px;
+  --radius-btn:    12px;
+  --shadow-card:   0 18px 44px rgba(15, 23, 42, 0.10);
+
+  --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 55%, var(--bg-end) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 3px solid var(--visitor);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- Page layout ---------- */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header,
+.main {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--org);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: -0.5px;
+}
+
+.brand-name {
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.4px;
+}
+
+/* ---------- Main ---------- */
+.main {
+  flex: 1 1 auto;
+  padding-top: 40px;
+  padding-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+}
+
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--live);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.45); }
+  50%      { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); }
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(34px, 6vw, 52px);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -1.6px;
+}
+
+.hero-text {
+  margin: 0;
+  max-width: 620px;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+/* ---------- Portal boxes ---------- */
+.portals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+}
+
+.portal {
+  /* each box sets its own colour through these two variables */
+  --accent: var(--org);
+  --accent-soft: var(--org-soft);
+
+  flex: 1 1 380px;
+  max-width: 520px;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.portal--visitor {
+  --accent: var(--visitor);
+  --accent-soft: var(--visitor-soft);
+}
+
+.portal-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: var(--accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.portal-icon svg {
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.portal-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.portal-text {
+  margin: 0;
+  color: var(--muted);
+}
+
+.portal-actions {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 10px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  flex: 1 1 140px;
+  min-height: 50px;
+  padding: 0 20px;
+  border-radius: var(--radius-btn);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn--solid {
+  background: var(--accent);
+  color: #fff;
+  border: 1.5px solid var(--accent);
+}
+
+.btn--solid:hover {
+  filter: brightness(1.12);
+}
+
+.btn--outline {
+  background: var(--surface);
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+
+.btn--outline:hover {
+  background: var(--accent-soft);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 22px 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .main      { padding-top: 24px; gap: 36px; }
+  .portal    { padding: 28px 22px; }
+  .hero-text { font-size: 16px; }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .live-dot { animation: none; }
+  .btn      { transition: none; }
+}
+
+/* =========================================================
+   Forms (registration / login pages)
+   ========================================================= */
+
+.site-header--split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.back-link svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.back-link:hover { color: var(--ink); }
+
+.main--form {
+  padding-top: 24px;
+  align-items: center;
+}
+
+.form-card {
+  /* colour comes from .portal--visitor / .portal--org */
+  --accent: var(--org);
+  --accent-soft: var(--org-soft);
+
+  width: 100%;
+  max-width: 680px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.form-card.portal--visitor {
+  --accent: var(--visitor);
+  --accent-soft: var(--visitor-soft);
+}
+
+.form-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.portal-icon--sm {
+  flex: 0 0 auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  margin: 0;
+}
+
+.portal-icon--sm svg { width: 30px; height: 30px; }
+
+.form-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.form-subtitle {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.field label,
+.field legend {
+  padding: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.field legend { margin-bottom: 6px; }
+
+.field-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* side-by-side fields share the row width (only inside a row) */
+.field-row > .field {
+  flex: 1 1 240px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+
+.field textarea {
+  height: auto;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder { color: #8391A7; }
+
+.field input:focus,
+.field textarea:focus,
+.input-group:focus-within {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* +91 phone box */
+.input-group {
+  display: flex;
+  height: 48px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.input-prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: #F1F5F9;
+  color: var(--muted);
+  font-weight: 600;
+  border-right: 1.5px solid var(--border);
+}
+
+.input-group input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+}
+
+.input-group input:focus { box-shadow: none; }
+
+/* Gender choices */
+.choice-group {
+  display: flex;
+  gap: 8px;
+}
+
+.choice {
+  flex: 1 1 0;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600 !important;
+  cursor: pointer;
+}
+
+.choice input {
+  width: auto;
+  height: auto;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.choice:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* Remember me */
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.check input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.btn--block {
+  flex: none;
+  width: 100%;
+  min-height: 52px;
+}
+
+.form-alt {
+  margin: 0;
+  text-align: center;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.form-alt a {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Validation */
+.error {
+  min-height: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #B91C1C;
+}
+
+.error:empty { display: none; }
+
+.field.has-error input,
+.field.has-error textarea,
+.field.has-error .input-group,
+.field.has-error .choice {
+  border-color: #B91C1C;
+}
+
+@media (max-width: 600px) {
+  .form-card  { padding: 28px 20px; }
+  .form-title { font-size: 24px; }
+  .form-head  { align-items: flex-start; }
+}
+
+/* =========================================================
+   Login (OTP) page
+   ========================================================= */
+
+.form-card--narrow { max-width: 480px; gap: 0; }
+
+.login-step {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.login-step[hidden] { display: none; }
+
+.form-head--center {
+  flex-direction: column;
+  text-align: center;
+  gap: 12px;
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Text-style button (Change / Resend) */
+.link-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.link-btn:hover { text-decoration: underline; }
+
+/* 6 OTP boxes */
+.otp-boxes {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.field .otp-boxes input {
+  height: 56px;
+  padding: 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  border-radius: 12px;
+}
+
+.field.has-error .otp-boxes input { border-color: #B91C1C; }
+
+.resend-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.resend-timer { font-weight: 700; }
+
+.form-note {
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+@media (max-width: 420px) {
+  .otp-boxes { gap: 6px; }
+  .field .otp-boxes input { height: 48px; font-size: 20px; }
+}
+
+/* ---------- Admin ---------- */
+.admin-badge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--org-soft);
+  color: var(--org);
+  border: 1px solid #C7D2FE;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+}

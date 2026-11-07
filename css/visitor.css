@@ -1,0 +1,154 @@
+/* =========================================================
+   Smart Queue – Visitor portal (teal)
+   Builds on style.css, admin.css and org.css
+   ========================================================= */
+
+.visitor-body {
+  --accent: var(--visitor);
+  --accent-soft: var(--visitor-soft);
+}
+
+.visitor-body .admin-nav-link[aria-current="page"] { background: var(--visitor-soft); color: var(--visitor); }
+.visitor-body .page-btn[aria-current="page"] { background: var(--visitor); border-color: var(--visitor); }
+.visitor-body .page-btn:hover:not(:disabled) { background: var(--visitor-soft); }
+.visitor-body .per-page select:focus,
+.visitor-body .admin-search input:focus { border-color: var(--visitor); box-shadow: 0 0 0 3px var(--visitor-soft); }
+.visitor-body .status--called-vis { background: var(--visitor-soft); color: var(--visitor); }
+
+/* Sidebar visitor card */
+.vis-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--visitor-soft);
+  margin-top: -8px;
+}
+
+.vis-avatar {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--visitor);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vis-card .org-card-sub { overflow-wrap: anywhere; }
+
+/* "Updates live" pill (dot styles come from style.css) */
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* Today section */
+.today-block { display: flex; flex-direction: column; gap: 12px; }
+.today-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+.today-head h2 { margin: 0; font-size: 18px; font-weight: 800; }
+.today-count { font-size: 14px; font-weight: 700; color: var(--muted); }
+
+.sub-label {
+  margin: 4px 0 10px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sub-label--called { color: var(--visitor); }
+
+.called-list { display: flex; flex-direction: column; gap: 12px; }
+
+/* Token cards */
+.tok-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.tok-card--called { border: 2px solid var(--visitor); padding: 22px 24px; gap: 14px; }
+
+.tok-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.tok-org { font-weight: 800; font-size: 15px; }
+
+.called-banner {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--visitor);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.called-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.tok-label { font-size: 12px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: var(--muted); }
+.tok-big { font-size: 52px; line-height: 1.05; color: var(--visitor); letter-spacing: -1px; }
+.tok-big--sm { font-size: 34px; }
+.tok-meta { font-size: 14px; color: var(--muted); }
+
+.tok-card .counter-cell { flex-wrap: wrap; gap: 8px 10px; }
+
+.tok-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.ts { padding: 8px; border-radius: 10px; background: #F8FAFC; font-size: 12px; }
+.ts span { display: block; font-weight: 700; color: var(--muted); }
+.ts strong { display: block; font-size: 16px; font-weight: 800; color: var(--ink); white-space: nowrap; }
+.ts--amber { background: #FEF3C7; }
+.ts--amber span, .ts--amber strong { color: #92400E; }
+.ts--teal { background: var(--visitor-soft); }
+.ts--teal span, .ts--teal strong { color: var(--visitor); }
+
+.tok-card .btn--sm { align-self: flex-start; }
+
+/* Waiting cards: fixed-height area that scrolls (page doesn't grow) */
+.card-scroll { max-height: 560px; overflow: auto; padding: 2px; }
+
+.wait-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.empty-note {
+  margin: 0;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  color: var(--muted);
+}
+
+.empty-note[hidden] { display: none; }
+
+@media (max-width: 600px) {
+  .tok-big { font-size: 40px; }
+  .card-scroll { max-height: none; }
+}

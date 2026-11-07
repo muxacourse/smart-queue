@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login – Smart Queue</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== Header ===== -->
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-logo">SQ</span>
+        <span class="brand-name">Smart Queue</span>
+        <span class="admin-badge">ADMIN</span>
+      </div>
+    </header>
+
+    <main class="main main--form">
+      <section class="form-card form-card--narrow">
+
+        <div class="login-step">
+          <div class="form-head form-head--center">
+            <div class="portal-icon portal-icon--sm">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div>
+              <h1 class="form-title">Admin login</h1>
+              <p class="form-subtitle">We’ll send a one-time password (OTP) to verify it’s you.</p>
+            </div>
+          </div>
+
+          <!-- action will point to your PHP file later, e.g. ../php/admin_send_otp.php -->
+          <form id="emailForm" class="form" action="#" method="post" novalidate data-role="admin">
+            <div class="field">
+              <label for="email">Admin email</label>
+              <input id="email" name="email" type="email" placeholder="admin@smartqueue.com" autocomplete="email" required>
+              <small class="hint">Only approved admin emails can sign in.</small>
+              <small class="error" data-for="email"></small>
+            </div>
+
+            <button type="submit" class="btn btn--solid btn--block">Send OTP</button>
+          </form>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      &copy; <span id="year">2026</span> Smart Queue &middot; Online queue management &amp; waiting estimation
+    </footer>
+
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile – Smart Queue</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/org.css">
+  <link rel="stylesheet" href="../css/visitor.css">
+</head>
+<body class="admin-body visitor-body">
+  <div class="admin-layout">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <span class="brand-logo">SQ</span>
+        <span class="brand-name">Smart Queue</span>
+      </div>
+
+      <div class="vis-card">
+        <span class="vis-avatar" id="visAvatar"></span>
+        <span class="org-card-text">
+          <span class="org-card-name" id="visName"></span>
+          <span class="org-card-sub" id="visEmail"></span>
+        </span>
+      </div>
+
+      <nav class="admin-nav" aria-label="Visitor">
+        <span class="admin-nav-label">Menu</span>
+        <a href="my-token.html" class="admin-nav-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>My Token</a>
+        <a href="token-history.html" class="admin-nav-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg>Token History</a>
+        <a href="profile.html" class="admin-nav-link" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>Profile</a>
+      </nav>
+
+      <a href="login.html" class="admin-nav-link admin-logout"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>Logout</a>
+    </aside>
+
+    <!-- ===== Main ===== -->
+    <main class="admin-main">
+      <div class="page-head-row">
+        <div class="admin-page-head">
+          <h1>Profile</h1>
+          <p>Your personal details.</p>
+        </div>
+      </div>
+
+      <section class="admin-card profile-card">
+        <form id="profileForm" class="form" novalidate>
+          <div class="field">
+            <label for="pName">Full name</label>
+            <input id="pName" name="name" type="text" autocomplete="name" required>
+            <small class="error" data-for="name"></small>
+          </div>
+
+          <div class="field">
+            <label for="pAddress">Address</label>
+            <textarea id="pAddress" name="address" rows="3" required></textarea>
+            <small class="error" data-for="address"></small>
+          </div>
+
+          <div class="field-row">
+            <fieldset class="field field--gender">
+              <legend>Gender</legend>
+              <div class="choice-group">
+                <label class="choice"><input type="radio" name="gender" value="Male">Male</label>
+                <label class="choice"><input type="radio" name="gender" value="Female">Female</label>
+                <label class="choice"><input type="radio" name="gender" value="Other">Other</label>
+              </div>
+              <small class="error" data-for="gender"></small>
+            </fieldset>
+
+            <div class="field">
+              <label for="pDob">Date of birth</label>
+              <input id="pDob" name="dob" type="date" required>
+              <small class="error" data-for="dob"></small>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="pEmail">Email</label>
+              <input id="pEmail" name="email" type="email" readonly class="is-locked">
+              <small class="hint">Used for OTP login. It can’t be changed.</small>
+            </div>
+
+            <div class="field">
+              <label for="pPhone">Phone number</label>
+              <div class="input-group">
+                <span class="input-prefix">+91</span>
+                <input id="pPhone" name="phone" type="tel" inputmode="numeric" maxlength="10" required>
+              </div>
+              <small class="error" data-for="phone"></small>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn--solid">Save changes</button>
+            <button type="button" class="btn btn--grey" id="profileReset">Cancel</button>
+            <span class="save-note" id="saveNote" role="status"></span>
+          </div>
+        </form>
+      </section>
+
+      <footer class="admin-footer">
+        &copy; <span id="year">2026</span> Smart Queue &middot; Online queue management &amp; waiting estimation
+      </footer>
+    </main>
+
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/org-common.js"></script>
+  <script src="../js/visitor-data.js"></script>
+  <script src="../js/visitor-common.js"></script>
+  <script src="../js/visitor-profile.js"></script>
+</body>
+</html>

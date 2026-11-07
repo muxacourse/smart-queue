@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organization Registration – Smart Queue</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== Header ===== -->
+    <header class="site-header site-header--split">
+      <a href="../index.html" class="brand" aria-label="Smart Queue home">
+        <span class="brand-logo">SQ</span>
+        <span class="brand-name">Smart Queue</span>
+      </a>
+      <a href="../index.html" class="back-link">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        Back to home
+      </a>
+    </header>
+
+    <main class="main main--form">
+      <section class="form-card">
+
+        <div class="form-head">
+          <div class="portal-icon portal-icon--sm">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><path d="M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg>
+          </div>
+          <div>
+            <h1 class="form-title">Register your organization</h1>
+            <p class="form-subtitle">Set up Smart Queue to issue digital tokens and manage your counters.</p>
+          </div>
+        </div>
+
+        <!-- action will point to your PHP file later, e.g. ../php/org_register.php -->
+        <form id="orgRegisterForm" class="form" action="#" method="post" novalidate>
+
+          <div class="field">
+            <label for="orgName">Organization name</label>
+            <input id="orgName" name="org_name" type="text" placeholder="e.g. City Care Clinic" autocomplete="organization" required>
+            <small class="error" data-for="org_name"></small>
+          </div>
+
+          <div class="field">
+            <label for="contactName">Contact person name</label>
+            <input id="contactName" name="contact_name" type="text" placeholder="Name of the person managing the account" autocomplete="name" required>
+            <small class="error" data-for="contact_name"></small>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">Official email</label>
+              <input id="email" name="email" type="email" placeholder="office@organization.com" autocomplete="email" required>
+              <small class="error" data-for="email"></small>
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <div class="input-group">
+                <span class="input-prefix">+91</span>
+                <input id="phone" name="phone" type="tel" placeholder="98765 43210" inputmode="numeric" maxlength="10" autocomplete="tel-national" required>
+              </div>
+              <small class="error" data-for="phone"></small>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="3" placeholder="Building, street, city, PIN code" autocomplete="street-address" required></textarea>
+            <small class="error" data-for="address"></small>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" id="remember" name="remember" value="1">
+            Remember me
+          </label>
+
+          <button type="submit" class="btn btn--solid btn--block">Register organization</button>
+
+          <p class="form-alt">Already registered? <a href="login.html">Login</a></p>
+        </form>
+
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      &copy; <span id="year">2026</span> Smart Queue &middot; Online queue management &amp; waiting estimation
+    </footer>
+
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/org-register.js"></script>
+</body>
+</html>

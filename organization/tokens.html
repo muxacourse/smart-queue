@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tokens – Smart Queue</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/org.css">
+</head>
+<body class="admin-body org-body">
+  <div class="admin-layout">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <span class="brand-logo">SQ</span>
+        <span class="brand-name">Smart Queue</span>
+      </div>
+
+      <div class="org-card">
+        <span class="org-card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/></svg></span>
+        <span class="org-card-text">
+          <span class="org-card-name" id="sideOrgName">Organization</span>
+          <span class="org-card-sub" id="sideOrgSub"></span>
+        </span>
+      </div>
+
+      <nav class="admin-nav" aria-label="Organization">
+        <span class="admin-nav-label">Menu</span>
+        <a href="dashboard.html" class="admin-nav-link"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Dashboard</a>
+        <a href="live-queue.html" class="admin-nav-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Live Queue</a>
+        <a href="counters.html" class="admin-nav-link"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Services / Counters</a>
+        <a href="tokens.html" class="admin-nav-link" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9a2 2 0 0 0 0 6v3a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-3a2 2 0 0 0 0-6V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>Tokens</a>
+        <a href="profile.html" class="admin-nav-link"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>Profile</a>
+      </nav>
+
+      <a href="login.html" class="admin-nav-link admin-logout"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>Logout</a>
+    </aside>
+
+    <!-- ===== Main ===== -->
+    <main class="admin-main admin-main--list">
+      <div class="page-head-row">
+        <div class="admin-page-head">
+          <h1>Tokens</h1>
+          <p id="tokensSub">All tokens issued by your organization.</p>
+        </div>
+        <button type="button" class="btn btn--solid" id="issueBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Issue token</button>
+      </div>
+
+      <section class="admin-card admin-card--list" id="tokensList">
+        <div class="admin-toolbar">
+          <label class="per-page">Show
+            <select id="perPage">
+              <option value="50" selected>50</option>
+              <option value="100">100</option>
+              <option value="150">150</option>
+              <option value="200">200</option>
+            </select>
+            per page
+          </label>
+          <div class="toolbar-right">
+            <label class="per-page">Token date
+              <input type="date" id="dateFilter" aria-label="Token date">
+            </label>
+            <label class="per-page">Status
+              <select id="statusFilter">
+                <option value="">All</option>
+                <option value="Waiting">Waiting</option>
+                <option value="Called">Called</option>
+                <option value="Served">Served</option>
+                <option value="No show">No show</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+            </label>
+            <div class="admin-search">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <input type="search" id="search" placeholder="Search token, name, email or phone" aria-label="Search token, name, email or phone">
+            </div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead><tr><th scope="col">#</th><th scope="col">Token no.</th><th scope="col">Visitor</th><th scope="col">Counter</th><th scope="col">Token date</th><th scope="col">Issued on</th><th scope="col">Status</th></tr></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="admin-pager">
+          <span id="pageInfo" class="page-info"></span>
+          <nav id="pagination" class="pagination" aria-label="Pagination"></nav>
+        </div>
+      </section>
+
+      <footer class="admin-footer">
+        &copy; <span id="year">2026</span> Smart Queue &middot; Online queue management &amp; waiting estimation
+      </footer>
+    </main>
+
+  </div>
+
+  <!-- ===== Issue token pop-up ===== -->
+  <div class="modal-backdrop" id="issueModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="issueTitle">
+      <div class="modal-head">
+        <h2 id="issueTitle">Issue token</h2>
+        <button type="button" class="icon-btn" data-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <form id="issueForm" novalidate>
+        <div class="modal-body">
+          <div class="field">
+            <label for="findVisitor">Visitor email or phone</label>
+            <div class="find-row">
+              <input id="findVisitor" type="text" placeholder="you@example.com or 98765 43210" autocomplete="off">
+              <button type="button" class="btn btn--outline" id="findBtn">Find</button>
+            </div>
+            <small class="error" data-for="visitor"></small>
+          </div>
+
+          <div class="found-box" id="foundBox" hidden></div>
+
+          <div class="field">
+            <label for="issueDate">Token date</label>
+            <input id="issueDate" type="date" class="date-input" required>
+            <small class="hint">Today or a future date.</small>
+            <small class="error" data-for="date"></small>
+          </div>
+
+          <fieldset class="field">
+            <legend>Counter</legend>
+            <div class="counter-options" id="counterOptions"></div>
+            <small class="hint">Only open counters are shown. Waiting counts are for the selected date.</small>
+            <small class="error" data-for="counter"></small>
+          </fieldset>
+
+          <div class="warn-box" id="dupWarn" role="alert" hidden></div>
+
+          <div class="preview-box" id="previewBox" hidden>
+            <span class="preview-left"><span>Next token</span><strong id="pvToken"></strong></span>
+            <span class="preview-right"><strong id="pvCounter"></strong><span id="pvWait"></span></span>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn--grey" data-close>Cancel</button>
+          <button type="submit" class="btn btn--solid" id="issueSubmit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9a2 2 0 0 0 0 6v3a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-3a2 2 0 0 0 0-6V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg><span>Issue token</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/org-data.js"></script>
+  <script src="../js/org-common.js"></script>
+  <script src="../js/org-tokens.js"></script>
+</body>
+</html>

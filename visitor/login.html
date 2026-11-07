@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visitor Login – Smart Queue</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== Header ===== -->
+    <header class="site-header site-header--split">
+      <a href="../index.html" class="brand" aria-label="Smart Queue home">
+        <span class="brand-logo">SQ</span>
+        <span class="brand-name">Smart Queue</span>
+      </a>
+      <a href="../index.html" class="back-link">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        Back to home
+      </a>
+    </header>
+
+    <main class="main main--form">
+      <section class="form-card form-card--narrow portal--visitor">
+
+        <div class="login-step">
+          <div class="form-head form-head--center">
+            <div class="portal-icon portal-icon--sm">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+            </div>
+            <div>
+              <h1 class="form-title">Visitor login</h1>
+              <p class="form-subtitle">We’ll send a one-time password (OTP) to verify it’s you.</p>
+            </div>
+          </div>
+
+          <!-- action will point to your PHP file later, e.g. ../php/visitor_send_otp.php -->
+          <form id="emailForm" class="form" action="#" method="post" novalidate data-role="visitor" data-remember-key="sq_visitor_email">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+              <small class="hint">Use the email you registered with. We’ll send the OTP there.</small>
+              <small class="error" data-for="email"></small>
+            </div>
+
+            <label class="check">
+              <input type="checkbox" id="remember" name="remember" value="1">
+              Remember me
+            </label>
+
+            <button type="submit" class="btn btn--solid btn--block">Send OTP</button>
+
+            <p class="form-alt">New to Smart Queue? <a href="register.html">Create account</a></p>
+          </form>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      &copy; <span id="year">2026</span> Smart Queue &middot; Online queue management &amp; waiting estimation
+    </footer>
+
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/login.js"></script>
+</body>
+</html>
